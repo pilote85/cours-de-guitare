@@ -31,8 +31,8 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-light);
+            cor: var(--text-main);
+            background-cor: var(--bg-light);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -45,7 +45,7 @@
 
         a {
             text-decoration: none;
-            color: inherit;
+            cor: inherit;
         }
 
         /* En-tête / Navigation */
@@ -67,13 +67,13 @@
             gap: 1rem;
         }
 
-        .logo-area {
+        .go-area {
             display: flex;
             align-items: center;
             gap: 10px;
             font-weight: 800;
             font-size: 1.3rem;
-            color: var(--secondary);
+            cor: var(--secondary);
             cursor: pointer;
             white-space: nowrap;
         }
@@ -778,11 +778,16 @@
 <body>
 
     <!-- EN-TÊTE / NAVIGATION PAR ONGLETS -->
+
+  
     <header>
         <div>
             <a onclick="openTab('accueil')" class="logo-area">
-                <img src="Logo assso.png" alt="Logo Guitarissimo">
-                <span>Guita<span>rissimo</span></span>
+                <img src="logo-ecole.jpg" alt="">
+                <div class="logo-text">
+                    <span class="logo-title">Guita<span>rissimo</span></span>
+                    <span class="logo-subtitle">Cours de guitare et ukulélé</span>
+                </div>
             </a>
             <nav id="main-nav">
                 <a onclick="openTab('accueil')" data-tab="accueil" class="active">Accueil</a>
