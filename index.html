@@ -313,7 +313,7 @@
             font-size: 1.05rem;
         }
 
-        /* Grille Tarifs */
+        /* Grille  */
         .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -794,6 +794,7 @@
                 <a onclick="openTab('cours')" data-tab="cours">Programme & Cours</a>
                 <a onclick="openTab('tarifs')" data-tab="tarifs">Tarifs</a>
                 <a onclick="openTab('calendrier')" data-tab="calendrier">Calendrier</a>
+                <a onclick="openTab('reglages')" data-tab="reglages">Réglages</a>
                 <a onclick="openTab('avis')" data-tab="avis">Avis</a>
                 <a onclick="openTab('reseaux')" data-tab="reseaux">Réseaux Sociaux</a>
             </nav>
@@ -973,7 +974,63 @@
             </section>
         </div>
 
-        <!-- ONGLET 5 : AVIS -->
+
+<!-- ONGLET 5 : RÉGLAGES & ENTRETIEN INSTRUMENTS -->
+        <div id="reglages" class="tab-page">
+            <section class="section-padding">
+                <div class="reglage-container">
+                    <div class="reglage-header">
+                        <div class="service-logo-badge">
+                            🎸 <span>Atelier Entretien & Réglages</span> 🪕
+                        </div>
+                        <h2>Réglages</h2>
+                        <div class="reglage-divider"></div>
+                    </div>
+
+                    <div class="reglage-item">
+                        <div class="reglage-info">
+                            <h3>Changement de cordes 6 cordes</h3>
+                        </div>
+                        <div class="reglage-price">12 €</div>
+                    </div>
+
+                    <div class="reglage-item">
+                        <div class="reglage-info">
+                            <h3>Changement de cordes 12 cordes</h3>
+                        </div>
+                        <div class="reglage-price">18 €</div>
+                    </div>
+
+                    <div class="reglage-item" style="border-bottom: none; padding-top: 0.5rem; padding-bottom: 1.5rem;">
+                        <div class="reglage-info">
+                            <p style="color: #cbd5e1; font-style: italic;">(Comptez le prix du jeu de cordes en plus des tarifs affichés)</p>
+                        </div>
+                    </div>
+
+                    <div class="reglage-item">
+                        <div class="reglage-info">
+                            <h3>Réglages guitares Acoustiques / Électriques / Basses</h3>
+                            <p>Réglage standard avec vérification complète de l'instrument et changement des cordes (jeu de corde en supplément)</p>
+                        </div>
+                        <div class="reglage-price">60 €</div>
+                    </div>
+
+                    <div class="reglage-item">
+                        <div class="reglage-info">
+                            <h3>Supplément Floyd-Rose</h3>
+                            <p>En cas de réajustement nécessaire de celui-ci</p>
+                        </div>
+                        <div class="reglage-price">15 €</div>
+                    </div>
+
+                    <div class="reglage-note">
+                        Confiez votre guitare ou votre ukulélé à un professionnel pour un jeu optimal et précis.
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- ONGLET 6 : AVIS -->
         <div id="avis" class="tab-page">
             <section class="section-padding">
                 <div class="section-title">
@@ -1025,7 +1082,7 @@
             </section>
         </div>
 
-        <!-- ONGLET 6 : RÉSEAUX SOCIAUX & YOUTUBE (FUSIONNÉS) -->
+        <!-- ONGLET 7 : RÉSEAUX SOCIAUX & YOUTUBE (FUSIONNÉS) -->
         <div id="reseaux" class="tab-page">
             <section class="section-padding">
                 <div class="section-title">
