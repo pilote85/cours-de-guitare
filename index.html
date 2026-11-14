@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitarissimo - Cours de Guitare et Ukulélé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF3366;
+            --primary-dark: #E61E50;
+            --secondary: #2E0854;
+            --accent: #00F0FF;
+            --yellow: #FFD600;
+            --bg-light: #FFF9FB;
+            --text-main: #2D3748;
+            --white: #FFFFFF;
+            --c-rouge-tomate: #d50000;
+            --c-vert-basilic: #0b8043;
+            --c-jaune-banane: #f6bf26;
+            --c-bleu-cobalt: #4285f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* En-tête / Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(46, 8, 84, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header > div {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .logo-area span span {
+            color: var(--primary);
+        }
+
+        .logo-area img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.1rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            cursor: pointer;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .btn-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
+            color: var(--white);
+            padding: 0.6rem 1.3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+            transition: transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-header:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Gestion des Onglets (Pages) */
+        .tab-page {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section principale (Hero) */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4A154B 100%);
+            color: var(--white);
+            padding: 5.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 214, 0, 0.15);
+            color: var(--yellow);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 214, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--yellow) 0%, #FF8A00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #E2E8F0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.35);
+            transition: transform 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sections Générales */
+        .section-padding {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 800;
+            margin-top: 0.5rem;
+        }
+
+        /* Grille Programme & Cours */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(46, 8, 84, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 51, 102, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(46, 8, 84, 0.12);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 2.5rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.75rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .course-content p {
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Grille Tarifs */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .price-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card h3 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-card p {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4A154B 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Réseaux Sociaux & YouTube Cards */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .social-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 15px 30px rgba(46, 8, 84, 0.06);
+            border: 1px solid rgba(255, 51, 102, 0.12);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(46, 8, 84, 0.12);
+        }
+
+        .social-icon-badge {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .badge-fb {
+            background: linear-gradient(135deg, #1877F2 0%, #0D5AB9 100%);
+        }
+
+        .badge-ig {
+            background: linear-gradient(135deg, #F58529 0%, #DD2A7B 50%, #8134AF 100%);
+        }
+
+        .badge-yt {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+
+        .social-card h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .social-card p {
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            font-size: 1.02rem;
+        }
+
+        .btn-fb {
+            background: #1877F2;
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+
+        .btn-ig {
+            background: linear-gradient(135deg, #DD2A7B 0%, #8134AF 100%);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+
+        .btn-yt {
+            background: #FF0000;
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+
+        .btn-fb:hover, .btn-ig:hover, .btn-yt:hover {
+            opacity: 0.9;
+        }
+
+        /* Conditions Générales de Service */
+        .terms-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.1);
+        }
+
+        .terms-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-content h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .terms-content p, .terms-content li {
+            margin-bottom: 0.8rem;
+            color: #4A5568;
+            font-size: 0.95rem;
+        }
+
+        .terms-content ul {
+            padding-left: 1.5rem;
+        }
+
+        /* Calendrier & Légende */
+        .legend-box {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 51, 102, 0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .color-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+        }
+
+        .dot-rouge { background-color: var(--c-rouge-tomate); }
+        .dot-vert { background-color: var(--c-vert-basilic); }
+        .dot-jaune { background-color: var(--c-jaune-banane); }
+        .dot-bleu { background-color: var(--c-bleu-cobalt); }
+
+        .calendar-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            text-align: center;
+        }
+
+        .calendar-frame-container {
+            width: 100%;
+            height: 650px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(46, 8, 84, 0.1);
+            background: #FFFFFF;
+            margin-top: 2rem;
+        }
+
+        .calendar-frame-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Section Avis Google */
+        .reviews-header-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .reviews-rating {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .rating-score {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            line-height: 1;
+        }
+
+        .rating-stars {
+            color: var(--yellow);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(46, 8, 84, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-card .stars {
+            color: var(--yellow);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-card p {
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .author-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--secondary);
+            color: #CBD5E1;
+            padding: 4rem 2rem 2rem;
+            border-top: 4px solid var(--primary);
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col ul li a {
+            cursor: pointer;
+        }
+
+        .footer-col ul li a:hover, .footer-col a:hover {
+            color: var(--yellow);
+        }
+
+        .contact-link {
+            color: #CBD5E1;
+            transition: color 0.2s;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link:hover {
+            color: var(--yellow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1050px) {
+            header > div {
+                flex-direction: column;
+            }
+            nav {
+                gap: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .reviews-header-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .reviews-rating {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE / NAVIGATION PAR ONGLETS -->
+    <header>
+        <div>
+            <a onclick="openTab('accueil')" class="logo-area">
+                <img src="Logo assso.png" alt="Logo Guitarissimo">
+                <span>Guita<span>rissimo</span></span>
+            </a>
+            <nav id="main-nav">
+                <a onclick="openTab('accueil')" data-tab="accueil" class="active">Accueil</a>
+                <a onclick="openTab('cours')" data-tab="cours">Programme & Cours</a>
+                <a onclick="openTab('tarifs')" data-tab="tarifs">Tarifs</a>
+                <a onclick="openTab('calendrier')" data-tab="calendrier">Calendrier</a>
+                <a onclick="openTab('avis')" data-tab="avis">Avis</a>
+                <a onclick="openTab('reseaux')" data-tab="reseaux">Réseaux Sociaux</a>
+                <a onclick="openTab('youtube')" data-tab="youtube">Chaîne YouTube</a>
+                <a onclick="openTab('cgs')" data-tab="cgs">Conditions Générales</a>
+            </nav>
+            <a href="https://www.helloasso.com/associations/guitarissimo-show/adhesions/inscription-cours-de-ukulele-et-guitare" target="_blank" rel="noopener noreferrer" class="btn-header">S'inscrire</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ONGLET 1 : ACCUEIL -->
+        <div id="accueil" class="tab-page active">
+            <section class="hero">
+                <div class="hero-container">
+                    <div>
+                        <span class="hero-badge">Inscriptions Ouvertes</span>
+                        <h1>Faites vibrer votre passion avec <span>Guitarissimo</span></h1>
+                        <p>Je vous propose des cours et des stages de guitare et ukulélé avec une pédagogie axée avant tout sur le plaisir. Guitarissimo est votre partenaire privilégié dans la musique, quel que soit votre âge ou votre style.</p>
+                        <div class="hero-buttons">
+                            <a onclick="openTab('cours')" class="btn-primary">Découvrir les cours</a>
+                            <a onclick="openTab('tarifs')" class="btn-outline">Voir les tarifs</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=800&q=80" alt="Cours de guitare Guitarissimo">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 2 : PROGRAMME & COURS -->
+        <div id="cours" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Nos Enseignements & Activités</span>
+                    <h2>Programme & Cours</h2>
+                </div>
+                
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto; font-size: 1.1rem; color: var(--text-main);">
+                    Avant toute première inscription, je vous propose un rendez-vous pour faire connaissance. Je suis à l’écoute de vos attentes, votre niveau et vos goûts musicaux afin d’adapter ma méthode d'enseignement. Que votre souhait soit de jouer au coin du feu ou de monter un groupe, l'apprentissage passe toujours par l'envie et le plaisir !
+                </p>
+
+                <div class="courses-grid">
+                    <!-- COLONNE GAUCHE : Cours de Guitare & Ukulélé (Image remplacée par Logo assso.png) -->
+                    <div class="course-card">
+                        <img src="Logo assso.png" alt="Cours de Guitare et Ukulélé Guitarissimo">
+                        <div class="course-content">
+                            <h3>Cours de Guitare & Ukulélé</h3>
+                            <p>Acoustique, folk, électrique ou ukulélé. Plusieurs formules de cours individuels sont possibles (différentes durées et fréquences) afin que chacun trouve un apprentissage parfaitement adapté à son rythme.</p>
+                            <a onclick="openTab('tarifs')" style="color: var(--primary); font-weight: 700; cursor: pointer;">Voir les formules et tarifs →</a>
+                        </div>
+                    </div>
+
+                    <!-- COLONNE DROITE : Ateliers, Stages & Festival Rockin' Tonight -->
+                    <div class="course-card">
+                        <img src="91-ALI_1359.jpg" alt="Festival Rockin' Tonight et Ateliers Guitarissimo">
+                        <div class="course-content">
+                            <h3>Ateliers, Stages & Rockin' Tonight</h3>
+                            <p>Je propose des ateliers musicaux et des stages organisés pendant les vacances scolaires (hiver, printemps, juillet). Du matériel peut être mis à votre disposition durant les stages. Retrouvez aussi nos projets et moments forts avec le festival <strong>Rockin' Tonight</strong> !</p>
+                            <a onclick="openTab('calendrier')" style="color: var(--primary); font-weight: 700; cursor: pointer;">Consulter le calendrier →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 3 : TARIFS -->
+        <div id="tarifs" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Investissement & Formules</span>
+                    <h2>Tarifs des Cours</h2>
+                </div>
+
+                <!-- Grille des Tarifs -->
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem;">Abonnements Annuels (Individuels)</h3>
+                <div class="price-grid">
+                    <div class="price-card">
+                        <div>
+                            <h3>1 heure / semaine</h3>
+                            <div class="price">86 € / mois</div>
+                            <p>Engagement de septembre à juin (10 mensualités).</p>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <div>
+                            <h3>45 min / semaine</h3>
+                            <div class="price">74 € / mois</div>
+                            <p>Engagement de septembre à juin (10 mensualités).</p>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <div>
+                            <h3>30 min / semaine</h3>
+                            <div class="price">56 € / mois</div>
+                            <p>Réservé aux enfants de -12 ans. Engagement de septembre à juin.</p>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <div>
+                            <h3>1 heure / quinzaine</h3>
+                            <div class="price">56 € / mois</div>
+                            <p>Idéal pour un rythme adapté à votre agenda.</p>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <div>
+                            <h3>45 min / quinzaine</h3>
+                            <div class="price">46 € / mois</div>
+                            <p>Formule bi-mensuelle souple.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary); margin: 3rem 0 1.5rem; font-size: 1.5rem;">Carnets de Cours (Sans engagement)</h3>
+                <div class="price-grid">
+                    <div class="price-card">
+                        <div>
+                            <h3>Carnet 10 cours (1h)</h3>
+                            <div class="price">390 €</div>
+                            <p>Valables 10 mois. Flexibilité totale selon vos disponibilités.</p>
+                        </div>
+                    </div>
+                    <div class="price-card">
+                        <div>
+                            <h3>Carnet 10 cours (45 min)</h3>
+                            <div class="price">340 €</div>
+                            <p>Valables 10 mois. Idéal pour s'initier à son rythme.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton d'inscription HelloAsso -->
+                <div class="cta-box">
+                    <h3>Prêt à vous lancer ?</h3>
+                    <p>Inscrivez-vous directement en ligne via notre plateforme sécurisée HelloAsso.</p>
+                    <a href="https://www.helloasso.com/associations/guitarissimo-show/adhesions/inscription-cours-de-ukulele-et-guitare" target="_blank" rel="noopener noreferrer" class="btn-cta">Accéder à la billetterie HelloAsso →</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 4 : CALENDRIER -->
+        <div id="calendrier" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Planning 2026-2027</span>
+                    <h2>Calendrier des cours</h2>
+                </div>
+
+                <!-- Légende des couleurs -->
+                <div class="legend-box">
+                    <div class="legend-item">
+                        <div class="color-dot dot-rouge"></div>
+                        <span>Cours hebdomadaires</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-dot dot-vert"></div>
+                        <span>Cours bi-mensuels (semaine verte)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-dot dot-jaune"></div>
+                        <span>Cours bi-mensuels (semaine jaune)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-dot dot-bleu"></div>
+                        <span>Planning sans cours / Vacances</span>
+                    </div>
+                </div>
+
+                <!-- Google Agenda Intégré -->
+                <div class="calendar-section">
+                    <h2>Agenda en direct</h2>
+                    <p>Retrouvez ci-dessous le planning interactif mis à jour en temps réel pour l'année 2026–2027.</p>
+                    
+                    <div class="calendar-frame-container">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FParis&showPrint=0&title=Calendrier%202026-2027-%20GUITARISSIMO&src=YzViNGQ3OTZmYzQ3OTM0NjNiNGU2NjUyODM0Y2E3MjhmZTFjZmQ0OWE3MDk2YjkyYWUwZjFjZjMwMmJiZmY4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzVlYzljZDI0OTZiY2JiMWU4ZTEzNTViZmJhYTYxZWJkZjJmOThkMDZhZjliMjNlMmQ0MTM5OTI4Y2JlMWI1MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MGIwZmU0YWNhODc4MTBlYjgwYTkwM2Y5NGMwZmRkYTUwOWM5NmZhYTBmYzZiZGQ4ZDEyNzJjODVkYzM1NjQzM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=OTRlZWRhNGRlM2JkNTk3Zjg2ZmViYmU2MDM3MWUwOGM2ZjZiYmFiNmVkNmI1ZjQ4MzNiOGYxMDgzYzM0NThiM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23d50000&color=%230b8043&color=%23f6bf26&color=%234285f4" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 5 : AVIS GOOGLE -->
+        <div id="avis" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Témoignages</span>
+                    <h2>Les avis de nos élèves</h2>
+                </div>
+
+                <!-- Encart Note Globale & Lien Google Maps -->
+                <div class="reviews-header-card">
+                    <div class="reviews-rating">
+                        <div class="rating-score">5.0</div>
+                        <div>
+                            <div class="rating-stars">★★★★★</div>
+                            <p style="font-weight: 700; color: var(--secondary); margin-top: 4px;">Avis vérifiés sur Google</p>
+                            <p style="font-size: 0.85rem; color: #718096;">Guitarissimo - Cours de guitare & Ukulélé (Saint-Mathurin)</p>
+                        </div>
+                    </div>
+                    <a href="https://www.google.com/maps/place/Guitarissimo-+Cours+de+guitare+%26+Ukul%C3%A9l%C3%A9/@46.554995,-1.7231839,17z/data=!4m8!3m7!1s0x48045d36bed4e1a3:0x22d9f469cdd8dac7!8m2!3d46.5548358!4d-1.7207176!9m1!1b1!16s%2Fg%2F12lkf3sm1?entry=ttu&g_ep=EgoyMDI2MTEwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Lire tous les avis / Laisser un avis Google →
+                    </a>
+                </div>
+
+                <!-- Exemples d'avis affichés -->
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p>« Un professeur passionné, pédagogue et très à l'écoute. On progresse à son rythme tout en jouant des morceaux que l'on aime. Je recommande à 100 % ! »</p>
+                        </div>
+                        <div class="review-author">
+                            <div class="author-avatar">E</div>
+                            <span>Élève Guitarissimo · Avis Google</span>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p>« Super ambiance et méthode très motivante, aussi bien pour les adultes débutants que pour les enfants. Les ateliers et scènes ouvertes sont un vrai plus ! »</p>
+                        </div>
+                        <div class="review-author">
+                            <div class="author-avatar">P</div>
+                            <span>Parent d'élève · Avis Google</span>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p>« J'ai découvert le ukulélé chez Guitarissimo et je ne m'en passe plus. Des conseils précieux, de la bienveillance et beaucoup de plaisir à chaque séance. »</p>
+                        </div>
+                        <div class="review-author">
+                            <div class="author-avatar">U</div>
+                            <span>Élève Ukulélé · Avis Google</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 6 : RÉSEAUX SOCIAUX (FACEBOOK & INSTAGRAM) -->
+        <div id="reseaux" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Restons Connectés</span>
+                    <h2>Nos Réseaux Sociaux</h2>
+                </div>
+
+                <p style="text-align: center; max-width: 750px; margin: 0 auto 3.5rem auto; font-size: 1.1rem; color: var(--text-main);">
+                    Suivez la vie de l'école Guitarissimo au quotidien : actualités, extraits d'ateliers, coulisses des stages, dates des scènes ouvertes et annonces du festival Rockin' Tonight !
+                </p>
+
+                <div class="social-grid">
+                    <!-- Facebook -->
+                    <div class="social-card">
+                        <div class="social-icon-badge badge-fb">f</div>
+                        <div>
+                            <h3>Page Facebook</h3>
+                            <p>Retrouvez toutes les actualités de l'école, les albums photos des événements, les informations pratiques et échangez avec la communauté Guitarissimo.</p>
+                        </div>
+                        <a href="https://www.facebook.com/guitarissimo.coursguitare/about" target="_blank" rel="noopener noreferrer" class="btn-fb">
+                            Visiter notre page Facebook →
+                        </a>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="social-card">
+                        <div class="social-icon-badge badge-ig">IG</div>
+                        <div>
+                            <h3>Compte Instagram</h3>
+                            <p>Découvrez en images et en stories l'ambiance des cours de guitare et de ukulélé, les répétitions en groupe et nos moments musicaux partagés.</p>
+                        </div>
+                        <a href="https://www.instagram.com/guitarissimocoursdeguitare?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn-ig">
+                            Suivre sur Instagram →
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 7 : CHAÎNE YOUTUBE -->
+        <div id="youtube" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Vidéos & Pédagogie</span>
+                    <h2>Chaîne YouTube</h2>
+                </div>
+
+                <div class="social-card" style="max-width: 700px; margin: 0 auto;">
+                    <div class="social-icon-badge badge-yt">▶</div>
+                    <div>
+                        <h3>Yohann Moreau · Guitarissimo</h3>
+                        <p>Retrouvez sur ma chaîne YouTube officielle des démonstrations musicales, des morceaux joués à la guitare et au ukulélé, des extraits de concerts et des ressources pédagogiques pour vous inspirer et progresser.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@yohannmoreau7572" target="_blank" rel="noopener noreferrer" class="btn-yt">
+                        Découvrir la chaîne YouTube →
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ONGLET 8 (DERNIER ONGLET) : CONDITIONS GÉNÉRALES DE SERVICE -->
+        <div id="cgs" class="tab-page">
+            <section class="section-padding">
+                <div class="section-title">
+                    <span>Cadre & Modalités</span>
+                    <h2>Conditions Générales de Service</h2>
+                </div>
+
+                <div class="terms-content">
+                    <p><strong>Mentions légales :</strong> Auto-entrepreneur Yohann Moreau – Guitarissimo | 6 rue de l’artisanat, ZA Les Biottières, 85150 Saint-Mathurin | N° SIREN : 794 948 299 00019.</p>
+
+                    <h3>Chapitre I : Conditions des formules de cours, ateliers et stages</h3>
+                    
+                    <h4>1. Les formules de cours</h4>
+                    <p>Guitarissimo propose des carnets de cours ainsi que des abonnements annuels (de septembre à juin, mensualisés sur 10 mois). Des cours collectifs (2 à 3 élèves maximum) peuvent être mis en place selon les affinités d'âge et de niveau.</p>
+                    <p><strong>Modalités des carnets :</strong> Réservation 48h à l'avance. Annulation sans frais > 48h (cours recrédité). En deçà de 48h, le cours est considéré comme dû. Validité de 10 mois.</p>
+
+                    <h4>2. Lieux des cours, ateliers et stages</h4>
+                    <ul>
+                        <li><strong>Cours et ateliers :</strong> Dispensés au sein de la salle de guitare / répétition de l'école ALL MUSIC, ZA « les Biottières » à Saint-Mathurin (85150).</li>
+                        <li><strong>Stages (vacances scolaires zone B) :</strong> Groupes de 2 à 5 élèves maximum, ouverts aux abonnés et non-abonnés.</li>
+                        <li><strong>Scènes ouvertes :</strong> Organisées le jeudi selon planning établi en début d’année (groupes de 2 à 4 élèves).</li>
+                    </ul>
+
+                    <h4>3. Règlement et frais</h4>
+                    <p><strong>Abonnements :</strong> Règlement par 10 chèques correspondant aux 10 mois d’enseignement. Tout impayé entraîne une suspension de service et des frais de rejet de 30 €.</p>
+                    <p><strong>Frais d'inscription :</strong> Montant annuel de 40 € TTC par an (valable pour tout le foyer fiscal).</p>
+
+                    <h4>4. Suspension et Résiliation</h4>
+                    <p>Suspension possible jusqu'à 2 mois maximum (maintien du créneau moyennant 50% du tarif mensuel). Résiliation par courrier recommandé avec AR dans le respect d'un préavis de 7 jours avant la date de référence.</p>
+
+                    <h4>5. Annulation de cours</h4>
+                    <p>L’école ne remplace pas un cours manqué du fait de l'élève. Si l'absence émane du professeur, le cours est remplacé ou non facturé.</p>
+
+                    <h3>Chapitre II : Aspects généraux contractuels</h3>
+                    <ul>
+                        <li><strong>Réduction d'impôts :</strong> Paiement par chèque emploi service non disponible en structure.</li>
+                        <li><strong>Rétractation :</strong> Délai de 7 jours francs (sauf si un premier cours a déjà été dispensé).</li>
+                        <li><strong>Responsabilité & Droit applicable :</strong> Soumis à la loi française. En cas de litige, attribution de compétence aux tribunaux de Nantes.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- PIED DE PAGE -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Guitarissimo</h3>
+                <p>École de musique privée spécialisée dans l'enseignement de la guitare et du ukulélé. Le plaisir de jouer et le partage avant tout !</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/guitarissimo.coursguitare/about" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/guitarissimocoursdeguitare?utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.youtube.com/@yohannmoreau7572" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a onclick="openTab('accueil')">Accueil</a></li>
+                    <li><a onclick="openTab('cours')">Programme & Cours</a></li>
+                    <li><a onclick="openTab('tarifs')">Tarifs</a></li>
+                    <li><a onclick="openTab('calendrier')">Calendrier</a></li>
+                    <li><a onclick="openTab('avis')">Avis Google</a></li>
+                    <li><a onclick="openTab('reseaux')">Réseaux Sociaux</a></li>
+                    <li><a onclick="openTab('youtube')">Chaîne YouTube</a></li>
+                    <li><a onclick="openTab('cgs')">Conditions Générales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact & Accès</h3>
+                <p>
+                    📍 <a href="https://maps.app.goo.gl/i6W7AWc9ug1p6mc66" target="_blank" rel="noopener noreferrer" class="contact-link"><strong>6 rue de l'artisanat - ZA Les Biottières</strong><br>85150 Saint Mathurin</a>
+                </p>
+                <p>
+                    💬 <a href="https://wa.me/33620208108?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%20les%20cours%20de%20musique." target="_blank" rel="noopener noreferrer" class="contact-link">06 20 20 81 08 (WhatsApp)</a>
+                </p>
+                <p>
+                    ✉️ <a href="mailto:contact@guitarissimo.fr?subject=Demande%20d'information%20cours%20de%20musique" target="_blank" rel="noopener noreferrer" class="contact-link">contact@guitarissimo.fr</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Guitarissimo. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE NAVIGATION PAR ONGLETS -->
+    <script>
+        function openTab(tabId) {
+            // Masquer toutes les pages
+            document.querySelectorAll('.tab-page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Retirer l'état actif de tous les liens du menu
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Afficher la page ciblée
+            const targetPage = document.getElementById(tabId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Activer l'onglet correspondant dans le menu
+            const activeLink = document.querySelector(`#main-nav a[data-tab="${tabId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Remonter tout en haut de la page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
